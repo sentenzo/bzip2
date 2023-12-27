@@ -1,6 +1,6 @@
 from .transform import Transformation, Composition
 from transformations.rle import RLE
-from transformations.bwt import BWT 
+from transformations.bwt import BWT
 from transformations.mtf import MTF
 from bits import BitArray
 from .hf_tree import HuffmanCanonicalTree
@@ -8,7 +8,7 @@ from .hf_tree import HuffmanCanonicalTree
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE
 
-TREE_ENCODER = Composition(RLE()) # Composition(RLE(), BWT(), MTF(), RLE())
+TREE_ENCODER = Composition(RLE())  # Composition(RLE(), BWT(), MTF(), RLE())
 TREE_HEADER_SIZE = 4
 
 
@@ -21,7 +21,7 @@ class HFC(Transformation):
         encoding_table = h_tree.get_encoding_table()
         for byte in block:
             encoded_bits.extend_bit(encoding_table[byte])
-        
+
         last_byte_length = len(encoded_bits) % BYTE_SIZE
         tail_length = 0
         if last_byte_length != 0:
@@ -53,7 +53,7 @@ class HFC(Transformation):
         h_lengths = HuffmanCanonicalTree.lengths_from_bytes(tree_lengths)
         h_tree = HuffmanCanonicalTree(h_lengths)
         h_trie_root = h_tree.get_trie()
-        h_trie_ptr= h_trie_root
+        h_trie_ptr = h_trie_root
         decoded = bytearray()
         for bit in BitArray.gen_bit_stream(block, drop_last=tail_length):
             h_trie_ptr = h_trie_ptr[bit]
@@ -61,4 +61,3 @@ class HFC(Transformation):
                 decoded.append(h_trie_ptr)
                 h_trie_ptr = h_trie_root
         return bytes(decoded)
-

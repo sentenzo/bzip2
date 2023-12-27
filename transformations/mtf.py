@@ -1,6 +1,7 @@
 from .transform import Transformation
 
-BYTE_CAPACITY = 256 # 2**8
+BYTE_CAPACITY = 256  # 2**8
+
 
 class MTF(Transformation):
     def encode(self, block: bytes) -> bytes:
@@ -21,4 +22,3 @@ class MTF(Transformation):
             decoded.append(byte)
             dictionary.insert(0, byte)
         return decoded
-            

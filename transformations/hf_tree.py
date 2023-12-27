@@ -1,7 +1,6 @@
 from collections import namedtuple, defaultdict
 from heapq import heapify, heappop, heappush
 
-from bits import BitArray
 
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE
@@ -19,7 +18,7 @@ class HuffmanCanonicalTree:
         for byte in block:
             frequencies[byte] += 1
         Node = namedtuple("Node", ["weight", "values"])
-        lengths = [0]*BYTE_CAPACITY
+        lengths = [0] * BYTE_CAPACITY
         weight_heap = [Node(w, [b]) for b, w in enumerate(frequencies)]
         heapify(weight_heap)
         while len(weight_heap) > 1:
@@ -33,7 +32,7 @@ class HuffmanCanonicalTree:
                 lengths[byte] += 1
                 assert 0 <= lengths[byte] < 256
         return lengths
-    
+
     @staticmethod
     def lengths_from_bytes(lengths_bytes: bytes) -> list:
         assert len(lengths_bytes) == BYTE_CAPACITY
@@ -41,11 +40,9 @@ class HuffmanCanonicalTree:
         for byte in lengths_bytes:
             lengths.append(int.from_bytes([byte]))
         return lengths
-    
 
     def lengths_to_bytes(self) -> bytes:
         return bytes(self.lengths)
-
 
     def get_trie(self):
         if not self.trie:
@@ -56,7 +53,7 @@ class HuffmanCanonicalTree:
             # encoding_table.sort()
             depth = 0
             while encoding_table:
-                next_encoding_table = [] # maybe deque ?
+                next_encoding_table = []  # maybe deque ?
                 for code, byte, trie_ptr in encoding_table:
                     code_bit = code[depth]
                     if depth == len(code) - 1:
@@ -68,7 +65,6 @@ class HuffmanCanonicalTree:
                 depth += 1
             self.trie = trie
         return self.trie
-    
 
     def get_encoding_table(self):
         if not self.encoding_table:

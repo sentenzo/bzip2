@@ -21,8 +21,10 @@ determined by the `n` value.
 - if `-128 <= n <= -1` — the following byte should be repeated `-n` times
 """
 
+
 class RLE(Transformation):
     """Run-length encoding"""
+
     def encode(self, block: bytes) -> bytes:
         Repeat = namedtuple("Repeat", ["times", "byte"])
         chunks = []
@@ -35,7 +37,7 @@ class RLE(Transformation):
                 if not chunks or isinstance(chunks[-1], Repeat):
                     chunks.append([])
                 chunks[-1].extend([byte] * count)
-        
+
         encoded = bytearray()
         # splitting chunks into packages, counting package bytes
         for chunk in chunks:
@@ -56,7 +58,7 @@ class RLE(Transformation):
                         encoded.append(length_byte)
                     encoded.append(byte)
         return bytes(encoded)
-    
+
     def decode(self, block: bytes) -> bytes:
         decoded = bytearray()
         next_counter_byte = 0
