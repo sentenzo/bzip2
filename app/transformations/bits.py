@@ -39,7 +39,7 @@ class BitArray:
             for _ in range(8):
                 byte <<= 1
                 byte += self.acc_bits.popleft()
-            byte = byte.to_bytes(1)[0]
+            byte = byte.to_bytes(1, byteorder="big")[0]
             self.bytes.append(byte)
 
     def __init__(self) -> None:

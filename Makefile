@@ -1,4 +1,9 @@
-CODE_DIRS = app
+
+APP_DIR = app
+CODE_DIRS = ${CODE_DIRS}
+
+run:
+	python ${APP_DIR}/main.py
 
 lint:
 	isort ${CODE_DIRS}
