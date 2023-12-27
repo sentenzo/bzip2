@@ -35,7 +35,9 @@ class BWT(Transformation):
         rotations.sort(key=slice_key)
 
         origin_ptr = rotations.index(0)
-        origin_ptr_bytes = origin_ptr.to_bytes(ORIGIN_PTR_SIZE, byteorder="big")
+        origin_ptr_bytes = origin_ptr.to_bytes(
+            ORIGIN_PTR_SIZE, byteorder="big"
+        )
         encoded = bytearray(origin_ptr_bytes)
         for rot in rotations:
             encoded.append(block[rot - 1])

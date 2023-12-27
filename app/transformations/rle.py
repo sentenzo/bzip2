@@ -46,9 +46,9 @@ class RLE(Transformation):
                 while times > 0:
                     counter = min(128, times)
                     times -= counter
-                    counter_byte = (-counter).to_bytes(1, signed=True, byteorder="big")[
-                        0
-                    ]
+                    counter_byte = (-counter).to_bytes(
+                        1, signed=True, byteorder="big"
+                    )[0]
                     encoded.append(counter_byte)
                     encoded.append(byte)
             elif isinstance(chunk, list):
@@ -56,9 +56,9 @@ class RLE(Transformation):
                 for i, byte in enumerate(chunk):
                     if i % 127 == 0:
                         length = min(127, total_length - i)
-                        length_byte = length.to_bytes(1, signed=True, byteorder="big")[
-                            0
-                        ]
+                        length_byte = length.to_bytes(
+                            1, signed=True, byteorder="big"
+                        )[0]
                         encoded.append(length_byte)
                     encoded.append(byte)
         return bytes(encoded)
@@ -69,7 +69,9 @@ class RLE(Transformation):
         repeat = 0
         for byte in block:
             if next_counter_byte == 0:
-                counter_int = int.from_bytes([byte], signed=True, byteorder="big")
+                counter_int = int.from_bytes(
+                    [byte], signed=True, byteorder="big"
+                )
                 if counter_int > 0:
                     next_counter_byte = counter_int
                 else:

@@ -48,7 +48,9 @@ class HuffmanCanonicalTree:
             Trie = lambda: defaultdict(Trie)
             trie = Trie()
             encoding_table = self.get_encoding_table()
-            encoding_table = [(c, b, trie) for b, c in enumerate(encoding_table) if c]
+            encoding_table = [
+                (c, b, trie) for b, c in enumerate(encoding_table) if c
+            ]
             # encoding_table.sort()
             depth = 0
             while encoding_table:

@@ -44,7 +44,9 @@ class HFC(Transformation):
 
     def decode(self, block: bytes) -> bytes:
         tree_lengths_size_bytes = block[:TREE_HEADER_SIZE]
-        tree_lengths_size = int.from_bytes(tree_lengths_size_bytes, byteorder="big")
+        tree_lengths_size = int.from_bytes(
+            tree_lengths_size_bytes, byteorder="big"
+        )
         block = block[TREE_HEADER_SIZE:]
         tree_lengths = block[:tree_lengths_size]
         tree_lengths = TREE_ENCODER.decode(tree_lengths)
