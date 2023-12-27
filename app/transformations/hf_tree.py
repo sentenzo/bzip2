@@ -37,7 +37,7 @@ class HuffmanCanonicalTree:
         assert len(lengths_bytes) == BYTE_CAPACITY
         lengths = []
         for byte in lengths_bytes:
-            lengths.append(int.from_bytes([byte]))
+            lengths.append(int.from_bytes([byte], byteorder="big"))
         return lengths
 
     def lengths_to_bytes(self) -> bytes:

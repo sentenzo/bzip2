@@ -2,7 +2,7 @@ from transformations.bwt import BWT
 from transformations.mtf import MTF
 from transformations.rle import RLE
 
-from app.bits import BitArray
+from .bits import BitArray
 
 from .hf_tree import HuffmanCanonicalTree
 from .transform import Composition, Transformation
@@ -32,7 +32,9 @@ class HFC(Transformation):
         tree_lengths = h_tree.lengths_to_bytes()
         tree_lengths = TREE_ENCODER.encode(tree_lengths)
         tree_lengths_size = len(tree_lengths)
-        tree_lengths_size_bytes = tree_lengths_size.to_bytes(TREE_HEADER_SIZE)
+        tree_lengths_size_bytes = tree_lengths_size.to_bytes(
+            TREE_HEADER_SIZE, byteorder="big"
+        )
 
         encoded = bytearray()
         encoded.extend(tree_lengths_size_bytes)
@@ -43,12 +45,12 @@ class HFC(Transformation):
 
     def decode(self, block: bytes) -> bytes:
         tree_lengths_size_bytes = block[:TREE_HEADER_SIZE]
-        tree_lengths_size = int.from_bytes(tree_lengths_size_bytes)
+        tree_lengths_size = int.from_bytes(tree_lengths_size_bytes, byteorder="big")
         block = block[TREE_HEADER_SIZE:]
         tree_lengths = block[:tree_lengths_size]
         tree_lengths = TREE_ENCODER.decode(tree_lengths)
 
-        tail_length = int.from_bytes([block[-1]])
+        tail_length = int.from_bytes([block[-1]], byteorder="big")
 
         block = block[tree_lengths_size:-1]
 
