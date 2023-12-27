@@ -1,15 +1,12 @@
-from transformations.bwt import BWT
-from transformations.mtf import MTF
-from transformations.rle import RLE
-
 from .bits import BitArray
 from .hf_tree import HuffmanCanonicalTree
-from .transform import Composition, Transformation
+from .rle import RLE
+from .transform import Transformation
 
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE
 
-TREE_ENCODER = Composition(RLE())  # Composition(RLE(), BWT(), MTF(), RLE())
+TREE_ENCODER = RLE()
 TREE_HEADER_SIZE = 4
 
 

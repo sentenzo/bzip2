@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from functools import cmp_to_key
-
 from .transform import Transformation
 
 ORIGIN_PTR_SIZE = 4

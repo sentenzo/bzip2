@@ -9,11 +9,11 @@ class Packager:
         self.transformation = transformation
         self.block_size = block_size
 
-    def gen_split_blocks(self, file_to_encode):
+    def _gen_split_blocks(self, file_to_encode):
         while block := file_to_encode.read(self.block_size):
             yield block
 
-    def gen_split_encoded_blocks(self, file_to_decode):
+    def _gen_split_encoded_blocks(self, file_to_decode):
         while block_length := file_to_decode.read(ENCODED_BLOCK_HEADER_SIZE):
             block_length = int.from_bytes(block_length, byteorder="big")
             block = file_to_decode.read(block_length)
@@ -21,7 +21,7 @@ class Packager:
 
     def apply_encoding(self, in_path, out_path):
         with open(in_path, "rb") as in_file, open(out_path, "wb") as out_file:
-            for block in self.gen_split_blocks(in_file):
+            for block in self._gen_split_blocks(in_file):
                 transformed_block = self.transformation.encode(block)
                 block_length = len(transformed_block)
                 block_length = block_length.to_bytes(
@@ -32,6 +32,6 @@ class Packager:
 
     def apply_decoding(self, in_path, out_path):
         with open(in_path, "rb") as in_file, open(out_path, "wb") as out_file:
-            for block in self.gen_split_encoded_blocks(in_file):
+            for block in self._gen_split_encoded_blocks(in_file):
                 transformed_block = self.transformation.decode(block)
                 out_file.write(transformed_block)
