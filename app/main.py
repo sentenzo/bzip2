@@ -1,9 +1,9 @@
+from packager import Packager
 from transformations.bwt import BWT
 from transformations.hfc import HFC
 from transformations.mtf import MTF
 from transformations.rle import RLE
 from transformations.transform import Composition
-from packager import Packager
 
 # BLOCK_SIZE_BYTES = 1024 * 512  # 0.5 Mib
 BLOCK_SIZE_BYTES = 1024 * 64  # 0.5 Mib

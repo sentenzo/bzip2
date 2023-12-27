@@ -3,7 +3,6 @@ from transformations.mtf import MTF
 from transformations.rle import RLE
 
 from .bits import BitArray
-
 from .hf_tree import HuffmanCanonicalTree
 from .transform import Composition, Transformation
 

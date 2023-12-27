@@ -1,6 +1,6 @@
 
 APP_DIR = app
-CODE_DIRS = ${CODE_DIRS}
+CODE_DIRS = ${APP_DIR} tests
 
 run:
 	python ${APP_DIR}/main.py
