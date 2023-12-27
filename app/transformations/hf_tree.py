@@ -1,6 +1,5 @@
-from collections import namedtuple, defaultdict
+from collections import defaultdict, namedtuple
 from heapq import heapify, heappop, heappush
-
 
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE

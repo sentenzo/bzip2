@@ -1,9 +1,11 @@
-from .transform import Transformation, Composition
-from transformations.rle import RLE
 from transformations.bwt import BWT
 from transformations.mtf import MTF
-from bits import BitArray
+from transformations.rle import RLE
+
+from app.bits import BitArray
+
 from .hf_tree import HuffmanCanonicalTree
+from .transform import Composition, Transformation
 
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE

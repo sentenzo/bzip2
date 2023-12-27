@@ -1,9 +1,8 @@
-from transformations.rle import RLE
 from transformations.bwt import BWT
-from transformations.mtf import MTF
 from transformations.hfc import HFC
+from transformations.mtf import MTF
+from transformations.rle import RLE
 from transformations.transform import Composition
-
 
 path = r"./test_file.txt"
 
