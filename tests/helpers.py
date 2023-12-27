@@ -1,0 +1,6 @@
+KiB = 1 << 10
+MiB = 1 << 20
+
+SMALL_SIZE = 123
+MEDIUM_SIZE = 53 * KiB
+LARGE_SIZE = MiB * 7 // 11

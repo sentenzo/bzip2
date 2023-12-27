@@ -1,0 +1,11 @@
+[tool.black]
+line-length = 79
+
+[tool.isort]
+line_length = 79
+known_local_folder = []
+
+[tool.pytest.ini_options]
+markers = [
+    "slow: marks test as slow (deselect with '-m \"not slow\"')",
+]

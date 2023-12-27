@@ -2,3 +2,4 @@
 .venv
 test_file*
 __pycache__
+.pytest_cache
