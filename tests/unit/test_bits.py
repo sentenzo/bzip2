@@ -1,5 +1,6 @@
 import pytest
-from app.transformations.bits import BitArray
+
+from app.transformations.hfc.bits import BitArray
 
 
 @pytest.mark.parametrize(

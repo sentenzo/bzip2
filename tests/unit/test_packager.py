@@ -5,13 +5,7 @@ import pytest
 from app.packager import Packager
 from app.transformations import Id
 
-
-def apply_encoding_decoding(packager: Packager, in_path):
-    en_path = in_path + ".en"
-    de_path = en_path + ".de"
-    packager.apply_encoding(in_path, en_path)
-    packager.apply_decoding(en_path, de_path)
-    return de_path
+from ..helpers import apply_encoding_decoding
 
 
 def test_apply_encoding_decoding(bin_file, block_size):

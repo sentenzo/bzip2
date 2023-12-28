@@ -28,9 +28,7 @@ def empty_bin_file(temp_dir):
     return temp_file
 
 
-@pytest.fixture(params=[123, 53 * KiB, MiB * 7 // 11])
-def bin_file(temp_dir, request):
-    file_size = request.param
+def create_random_file(temp_dir, file_size):
     with tempfile.NamedTemporaryFile(dir=temp_dir, delete=False) as temp_file:
         while file_size > 0:
             chunk_size = min(file_size, DEFAULT_CHUNK_SIZE)
@@ -39,6 +37,18 @@ def bin_file(temp_dir, request):
     return temp_file
 
 
-@pytest.fixture(params=[77 * KiB, 512 * KiB])
+@pytest.fixture(params=[123, 53 * KiB, MiB * 7 // 11])
+def bin_file(temp_dir, request):
+    file_size = request.param
+    return create_random_file(temp_dir, file_size)
+
+
+@pytest.fixture(params=[123, 565, 1380, 7 * KiB, 53 * KiB])
+def small_bin_file(temp_dir, request):
+    file_size = request.param
+    return create_random_file(temp_dir, file_size)
+
+
+@pytest.fixture(params=[409, 15 * KiB, 77 * KiB, 512 * KiB])
 def block_size(request):
     return request.param
