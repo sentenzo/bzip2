@@ -3,24 +3,6 @@ from itertools import groupby
 
 from ..transform import Transformation
 
-"""
-## The PackBits algorithm
-
-You split your initial data into packages:
-```python
--128;127
-"inqktqigfffffhmkvosynozpgggggggggpcrelizif"
-["inqktqig", ("f", 5), "hmkvvosynozp", ("g", 9), "pcrelizzif"]
-[8, "inqktqig", -5, "f", 12, "hmkvvosynozp", -9, "g", 10, "pcrelizzif"]
-```
-The stream of bytes always starts with a **counter byte** `n`. Its value 
-can be between `-128` and `127`. It describes the package of the size, 
-determined by the `n` value.
-
-- if  `0 <= n <= 127` — the next `n` symbols are not modified
-- if `-128 <= n <= -1` — the following byte should be repeated `-n` times
-"""
-
 
 class RLE(Transformation):
     """Run-length encoding"""
