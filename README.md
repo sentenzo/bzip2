@@ -28,7 +28,6 @@ data compression algorithm.
  - it outperforms (slightly) the standard zip-algorithm
  - it works with binary data, therefore no file-type restrictions
 
----
 
 
 ## Disclaimer
@@ -125,7 +124,7 @@ The binary format is as follow:
 ### Software requirements
 
 - [`Python >=3.10`](https://www.python.org/downloads/)
-- (potional) [`make`](https://en.wikipedia.org/wiki/Make_(software)) tool — for build-automation
+- (optional) [`make`](https://en.wikipedia.org/wiki/Make_(software)) tool — for build-automation
 
 ### How to launch
 
