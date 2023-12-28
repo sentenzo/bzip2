@@ -1,4 +1,4 @@
-# bzip2
+<h1>bzip2</h1>
 
 This project is my implementation of **bzip2** 
 ([wiki](https://en.wikipedia.org/wiki/Bzip2)) — a popular and efficient 
@@ -6,10 +6,30 @@ data compression algorithm.
 
 ![preview](./preview.png)
 
-### Features
+
+- [Features](#features)
+- [Disclaimer](#disclaimer)
+- [Project overview](#project-overview)
+- [Algorithm specification](#algorithm-specification)
+  - [Splitting into blocks](#splitting-into-blocks)
+  - [Run-length encoding](#run-length-encoding)
+  - [Burrows-Wheeler transform](#burrows-wheeler-transform)
+  - [Move-to-front transform](#move-to-front-transform)
+  - [Huffman coding](#huffman-coding)
+  - [Merging the blocks](#merging-the-blocks)
+- [Project infrastructure](#project-infrastructure)
+  - [Software requirements](#software-requirements)
+  - [How to launch](#how-to-launch)
+  - [How to setup developer environment](#how-to-setup-developer-environment)
+- [Licensing](#licensing)
+
+## Features
  - a pure Python (`>=3.10`) implementation with no third-party dependencies
  - it outperforms (slightly) the standard zip-algorithm
  - it works with binary data, therefore no file-type restrictions
+
+---
+
 
 ## Disclaimer
 Though the code presented is fully functional, passes all the tests and has 
@@ -54,16 +74,25 @@ So, to encode (and compress) the file we apply the transformations from the list
 
 Thus to decode the file, one should apply the inverse transformations in inverse order.
 
-The implementation details of steps from `2` to `6` can be found in the corresponding `README.md`-files (the "specification" column). 
 
-The the first and the last steps (block splitting and merging) will be briefly described below.
-
-### (1) Splitting into blocks
+### Splitting into blocks
 
 The `Splitting into blocks` step is just making an inerator based on the file descriptor given. 
 This iterator yields byte-blocks of a fixed size.
 
-### (7) Merging the blocks
+### Run-length encoding
+See: [RLE README.md](app/transformations/rle/README.md)
+
+### Burrows-Wheeler transform
+See: [BWT README.md](app/transformations/bwt/README.md)
+
+### Move-to-front transform 
+See: [MTF README.md](app/transformations/mtf/README.md)
+
+### Huffman coding
+See: [HFC README.md](app/transformations/hfc/README.md)
+
+### Merging the blocks
 
 `Merging the blocks` is a little bit trickier. The final block size is indetermined, 
 so we have to store it somewhere. Otherwise we won't be able to reverse this operation.
