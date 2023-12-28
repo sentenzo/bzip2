@@ -5,7 +5,7 @@ import pytest
 
 from tests.helpers import KiB, MiB
 
-DEFAULT_CHUNK_SIZE = 2**15
+DEFAULT_CHUNK_SIZE = 2**15  # 32 KiB
 
 random.seed(0xDEADBEEF)
 
@@ -28,12 +28,6 @@ def empty_bin_file(temp_dir):
     return temp_file
 
 
-@pytest.fixture
-def temp_file(temp_dir):
-    with tempfile.NamedTemporaryFile(dir=temp_dir) as temp_file:
-        yield temp_file
-
-
 @pytest.fixture(params=[123, 53 * KiB, MiB * 7 // 11])
 def bin_file(temp_dir, request):
     file_size = request.param
@@ -43,3 +37,8 @@ def bin_file(temp_dir, request):
             temp_file.write(random.randbytes(chunk_size))
             file_size -= chunk_size
     return temp_file
+
+
+@pytest.fixture(params=[77 * KiB, 512 * KiB])
+def block_size(request):
+    return request.param
