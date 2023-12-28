@@ -22,7 +22,7 @@
 
 There will be a very detailed article here about the different approaches to RLE.
 
-[Click HERE to get straight to the **practical part**, jump here](#the-packbits-algorithm).
+[Click HERE to get straight to the **practical part**](#the-packbits-algorithm).
 
 ## Abstract
 
