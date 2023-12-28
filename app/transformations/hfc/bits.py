@@ -12,6 +12,8 @@ class BitArray:
                 drop_lz = False
             if not drop_lz:
                 yield bit
+        if drop_lz == True:
+            yield 0
 
     @staticmethod
     def gen_bit_stream(chunk_of_bytes, *, drop_last=0):
@@ -69,7 +71,7 @@ class BitArray:
         byte_array = self.bytes[:]
         if self.acc_bits:
             last_byte = 0
-            for i in range(8):
+            for i in range(8):  # [01011] => [01011000] (filing with zeros)
                 last_byte <<= 1
                 if i < len(self.acc_bits):
                     last_byte += self.acc_bits[i]

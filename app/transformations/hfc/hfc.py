@@ -1,7 +1,7 @@
+from ..rle.rle import RLE
+from ..transform import Transformation
 from .bits import BitArray
 from .hf_tree import HuffmanCanonicalTree
-from .rle import RLE
-from .transform import Transformation
 
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE

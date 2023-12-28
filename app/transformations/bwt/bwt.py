@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .transform import Transformation
+from ..transform import Transformation
 
 ORIGIN_PTR_SIZE = 4
 

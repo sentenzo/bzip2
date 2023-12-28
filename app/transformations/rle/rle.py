@@ -1,7 +1,7 @@
 from collections import namedtuple
 from itertools import groupby
 
-from .transform import Transformation
+from ..transform import Transformation
 
 """
 ## The PackBits algorithm

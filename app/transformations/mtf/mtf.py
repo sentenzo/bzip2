@@ -1,4 +1,4 @@
-from .transform import Transformation
+from ..transform import Transformation
 
 BYTE_CAPACITY = 256  # 2**8
 
