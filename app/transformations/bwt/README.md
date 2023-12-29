@@ -11,6 +11,7 @@
   - [1. we need to do something with the `$` character.](#1-we-need-to-do-something-with-the--character)
   - [2. `O(N^2)` space complexity is unacceptable](#2-on2-space-complexity-is-unacceptable)
   - [3. `O(N^3 log N)` time complexity to restore the rotation table (decoding) is unacceptable](#3-on3-log-n-time-complexity-to-restore-the-rotation-table-decoding-is-unacceptable)
+    - [Side notes](#side-notes-2)
 - [Specification](#specification)
 
 
@@ -60,7 +61,8 @@ cadabra$abra
 dabra$abraca
 ra$abracadab
 racadabra$ab
-           ↑
+           ╷
+           ╰→  ard$rcaaaabb
 ```
 
 The last column of this table of symbols is the encoded string:
@@ -69,6 +71,8 @@ The last column of this table of symbols is the encoded string:
 So, `bwt.encode("abracadabra$") → "ard$rcaaaabb"`.
 
 #### Side notes
+- see how the encoded string groups most `a` and `b` characters together
+- [try BWT online](http://guanine.evolbio.mpg.de/cgi-bin/bwt/bwt.cgi.pl)
 - the table of symbols is actually square-shaped
     - so, it takes `O(N^2)` memory — not cool 🙁
 - obvious: each **row** contains all the characters of the initial string
@@ -303,6 +307,10 @@ for i in range(data_size):
 ```
 
 Total time complexity: `O(N log N)`
+
+#### Side notes
+- the sorting algorithm should be **stable** — otherwise there's ambiguity in permutation construction
+
 
 ## Specification
 
