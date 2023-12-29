@@ -76,10 +76,10 @@ The `Splitting into blocks` step is just making an inerator based on the file de
 This iterator yields byte-blocks of a fixed size (currently the default block size is `128 KiB`).
 
 ### Run-length encoding
-See: [RLE README.md](app/transformations/rle/README.md)
+See: [RLE README (≈12 minutes to read)](app/transformations/rle/README.md)
 
 ### Burrows-Wheeler transform
-See: [BWT README.md](app/transformations/bwt/README.md)
+See: [BWT README  (≈20 minutes to read)](app/transformations/bwt/README.md)
 
 ### Move-to-front transform 
 See: [MTF README.md](app/transformations/mtf/README.md)
