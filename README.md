@@ -33,7 +33,7 @@ data compression algorithm.
 ## Disclaimer
 Though the code presented is fully functional, passes all the tests and has 
 notable compression efficiency, the following should be taken into account:
-- it's a pet project — it was **never meant to be used in production**
+- it's a pet project — it is made to satisfy my curiosity, it was **never meant to be used in production**
 - the file binary structure is incompatible with the original bzip2 format 
 (= can't be opened with an archive manager app)
 - no consistency check (conversely to bzip canonical implementation)
@@ -54,12 +54,8 @@ The project files can be roughly groupt into three cathegories:
 bzip2 algorithm can be described as a chain of reversible transformations:
 
 1. Splitting into blocks
-2. **RLE**
-3. **BWT**
-4. **MTF**
-5. **RLE**
-6. **HFC**
-7. Merging the blocks
+2. **RLE** `→` **BWT** `→` **MTF** `→` **RLE** `→` **HFC** 
+3. Merging the blocks
 
 where:
 | term    | wiki                                                                    | description               | specification                                  |
@@ -77,7 +73,7 @@ Thus to decode the file, one should apply the inverse transformations in inverse
 ### Splitting into blocks
 
 The `Splitting into blocks` step is just making an inerator based on the file descriptor given. 
-This iterator yields byte-blocks of a fixed size.
+This iterator yields byte-blocks of a fixed size (currently the default block size is `128 KiB`).
 
 ### Run-length encoding
 See: [RLE README.md](app/transformations/rle/README.md)
