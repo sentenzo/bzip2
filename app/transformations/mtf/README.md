@@ -87,16 +87,14 @@ The encoded string is `[2,14,1,1,14,20,20]`.
 We have:
 - the initial dictionary state:
 ```
-  0  1  2  3  4  5  6  7  8  9 10 11 12 
-  a  b  c  d  e  f  g  h  i  j  k  l  m
- 13 14 15 16 17 18 19 20 21 22 23 24 25
-  n  o  p  q  r  s  t  u  v  w  x  y  z
+  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+  a  b  c  d  e  f  g  h  i  j  k  l  m  n  o  p  q  r  s  t  u  v  w  x  y  z
 ```
 - the encoded string: `[2,14,1,1,14,20,20]`
 
 This is enough to recreate the hole encoding procedure.
 
-1. **The 1st symbol** of the string is encoded with `2`. At the first iteration the dictionary had initial state. Hence, **the 1st symbol is `dict[2] == "c"`**.
+1. **The 1st symbol** of the string is encoded with `2`. At the first iteration the dictionary was in its initial state. Hence, **the 1st symbol is `dict[2] == "c"`**.
     - we know exactly how the dictionary was modified: `"abcd...xyz" => "cabd...xyz"`
 2. **The 1st symbol** of the string is encoded with `14`. So, it will be `dict[14] == "o"`
     - don't forget to modify

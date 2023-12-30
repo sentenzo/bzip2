@@ -8,7 +8,7 @@
   - [Decoding](#decoding)
     - [Side notes](#side-notes-1)
 - [More efficient implementation](#more-efficient-implementation)
-  - [1. we need to do something with the `$` character.](#1-we-need-to-do-something-with-the--character)
+  - [1. We need to do something with the `$` character.](#1-we-need-to-do-something-with-the--character)
   - [2. `O(N^2)` space complexity is unacceptable](#2-on2-space-complexity-is-unacceptable)
   - [3. `O(N^3 log N)` time complexity to restore the rotation table (decoding) is unacceptable](#3-on3-log-n-time-complexity-to-restore-the-rotation-table-decoding-is-unacceptable)
     - [Side notes](#side-notes-2)
@@ -167,7 +167,7 @@ Repeating this process iteratively will eventually give us all the columns of th
     - we can't say if it was `abracadabra` or `adabraabra` or any other rotation
 
 ## More efficient implementation
-### 1. we need to do something with the `$` character.
+### 1. We need to do something with the `$` character.
 
 Why so? Because **we work with binary data — not strings**. We can't just mark the end of the initial sequence with `$`. Because this symbol (as any other byte) can be the part of the sequence
 
@@ -226,7 +226,7 @@ Thus, space complexity becomes `O(N)`.
 
 ### 3. `O(N^3 log N)` time complexity to restore the rotation table (decoding) is unacceptable
 
-`O(N log(N))` — is efficient sort algorithm time complexity **on fixed-sized elements**. But we are trying to sort arbitrary long chunks of data, so is without optimization it turns into `O(N^2 log N^2 ) == O(N^2 log N)`.
+`O(N log(N))` — is an efficient sort algorithm time complexity **on fixed-sized elements**. But we are trying to sort arbitrary long chunks of data, so without optimization it turns into `O(N^2 log N^2 ) == O(N^2 log N)`.
 
 We apply sorting algorithm `N` times, so it becomes `O(N^3 log N)`.
 
@@ -314,7 +314,7 @@ Total time complexity: `O(N log N)`
 
 ## Specification
 
-`last_char_position` has to be stored in the encoded block. So we put it at the beginning. The size is fixed and equal to 4 bytes.
+`last_char_position` has to be stored in the encoded block. So we put it at the beginning. The size is fixed and equals to 4 bytes.
 
 ```
  0               1               2               3
@@ -325,7 +325,7 @@ Total time complexity: `O(N log N)`
 |                                                               |
 |                                                               |
 |                                                               |
-|                        encoded data                           |
+|                 encoded data (up to 4 GiB)                    |
 |                                                               |
 |                                                               |
 |                                                               |
