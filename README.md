@@ -58,12 +58,12 @@ bzip2 algorithm can be described as a chain of reversible transformations:
 3. Merging the blocks
 
 where:
-| term    | wiki                                                                    | description               | specification                                  |
-| ------- | ----------------------------------------------------------------------- | ------------------------- | ---------------------------------------------- |
-| **RLE** | [link](https://en.wikipedia.org/wiki/Run-length_encoding)               | run-length encoding       | [README.md](app/transformations/rle/README.md) |
-| **BWT** | [link](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) | Burrows-Wheeler transform | [README.md](app/transformations/bwt/README.md) |
-| **MTF** | [link](https://en.wikipedia.org/wiki/Move-to-front_transform)           | move-to-front transform   | [README.md](app/transformations/mtf/README.md) |
-| **HFC** | [link](https://en.wikipedia.org/wiki/Huffman_coding)                    | Huffman coding            | [README.md](app/transformations/hfc/README.md) |
+| term    | wiki                                                                    | description               |
+| ------- | ----------------------------------------------------------------------- | ------------------------- |
+| **RLE** | [link](https://en.wikipedia.org/wiki/Run-length_encoding)               | run-length encoding       |
+| **BWT** | [link](https://en.wikipedia.org/wiki/Burrows%E2%80%93Wheeler_transform) | Burrows-Wheeler transform |
+| **MTF** | [link](https://en.wikipedia.org/wiki/Move-to-front_transform)           | move-to-front transform   |
+| **HFC** | [link](https://en.wikipedia.org/wiki/Huffman_coding)                    | Huffman coding            |
 
 So, to encode (and compress) the file we apply the transformations from the list sequentially.
 
