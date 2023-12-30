@@ -79,13 +79,13 @@ This iterator yields byte-blocks of a fixed size (currently the default block si
 See: [RLE README (≈ 12 minutes to read)](app/transformations/rle/README.md)
 
 ### Burrows-Wheeler transform
-See: [BWT README  (≈ 20 minutes to read)](app/transformations/bwt/README.md)
+See: [BWT README (≈ 20 minutes to read)](app/transformations/bwt/README.md)
 
 ### Move-to-front transform 
 See: [MTF README.md (≈ 6 minutes to read)](app/transformations/mtf/README.md)
 
 ### Huffman coding
-See: [HFC README.md](app/transformations/hfc/README.md)
+See: [HFC README.md (≈ 20 minutes to read)](app/transformations/hfc/README.md)
 
 ### Merging the blocks
 

@@ -325,7 +325,7 @@ Total time complexity: `O(N log N)`
 |                                                               |
 |                                                               |
 |                                                               |
-|                  encoded data (up to 4 GiB)                   |
+|                        encoded data                           |
 |                                                               |
 |                                                               |
 |                                                               |
