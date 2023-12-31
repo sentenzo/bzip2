@@ -56,7 +56,7 @@ It's a binary tree (each node has no more than two children). Each branch is mar
 
 The bit sequence after the `#` sign represents the encoding of each symbol. It derives from the path you should cross to get to the leaf. For example, to get to `"d"`, you need to go down (`1`), down (`1`), down (`1`), up (`0`), and this gives you `1110`.
 
-Finally, to get the encoded data, we need to replace each symbol with its encoded bit sequance:
+Finally, to get the encoded data, we need to replace each symbol with its encoded bit sequence:
 ```python
 encoder = {
   "o": [0,0],
@@ -384,6 +384,8 @@ It seems reasonable to have a separated class for these tasks. What should it do
 
 `lengths_rle_compressed == rle(lengths)`
 
+`tail_length` — is a `1` byte segment to store the amount of aligning (non-significant) bits, which should be dropped from the end of the `encoded data` section.
+
 ```
  0               1               2               3
  0 1 2 3 4 5 6 7 8 9 A B C D E F 0 1 2 3 4 5 6 7 8 9 A B C D E F
@@ -399,7 +401,7 @@ It seems reasonable to have a separated class for these tasks. What should it do
 |                                                               |
 |                        encoded data                           |
 |                                                               |
-|                                                               |
-|                                                               |
+|                                               +-+-+-+-+-+-+-+-+
+|                                               |  tail_length  |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
