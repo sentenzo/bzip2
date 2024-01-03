@@ -46,7 +46,7 @@ notable compression efficiency, the following should be taken into account:
 
 The project files can be roughly groupt into three cathegories:
 1. The implementation itself
-2. Infrostructure (`Makefile`, `main.py`, settings, tests)
+2. Infrastructure (`Makefile`, `main.py`, settings, tests)
 3. Extended documentation (all the `README.md` files)
 
 ## Algorithm specification
