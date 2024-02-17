@@ -4,8 +4,12 @@ This project is my implementation of **bzip2**
 ([wiki](https://en.wikipedia.org/wiki/Bzip2)) — a popular and efficient 
 data compression algorithm.
 
+Here's how it zips Leo Tolstoy's "War and Peace" versus standard 
+[ZIP-algorithm](https://en.wikipedia.org/wiki/Deflate):
+
 ![preview](./preview.png)
 
+<h2>Table of contents</h2>
 
 - [Features](#features)
 - [Disclaimer](#disclaimer)
