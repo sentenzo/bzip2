@@ -1,7 +1,7 @@
 from collections import deque
 
-REAL_BYTE_SIZE = 8
-DEFAULT_BYTE_SIZE = REAL_BYTE_SIZE
+ACTUAL_BYTE_SIZE = 8
+DEFAULT_BYTE_SIZE = ACTUAL_BYTE_SIZE
 
 
 class BitArray:
@@ -22,7 +22,7 @@ class BitArray:
 
     @staticmethod
     def gen_bit_stream(
-        chunk_of_bytes: list[int],
+        chunk_of_bytes: list[int] | bytes,
         *,
         drop_last=0,
         byte_size: int = DEFAULT_BYTE_SIZE,
@@ -95,3 +95,9 @@ class BitArray:
     def __iter__(self):
         yield from self.gen_bit_stream(self.bytes, byte_size=self.byte_size)
         yield from self.acc_bits
+
+    def to_byte_size(self, new_byte_size: int) -> "BitArray":
+        new_bit_array = BitArray(new_byte_size)
+        for bit in self:
+            new_bit_array.append_bit(bit)
+        return new_bit_array
