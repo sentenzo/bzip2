@@ -8,7 +8,8 @@ run:
 lint:
 	isort ${CODE_DIRS}
 	black ${CODE_DIRS}
-	flake8 ${CODE_DIRS} --count --select=E9,F63,F7,F82 --show-source --statistics
+	ruff check ${CODE_DIRS}
+	poetry check
 
 test:
 	pytest -vsx -m "not slow"

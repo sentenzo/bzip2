@@ -1,6 +1,6 @@
 import filecmp
 
-from bzip2 import decode, encode
+from app.bzip2 import decode, encode
 
 if __name__ == "__main__":
     in_file = r"./Tolstoy Leo - War and Peace.txt"

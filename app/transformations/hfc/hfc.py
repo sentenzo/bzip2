@@ -1,4 +1,4 @@
-from ..rle.rle import RLE
+from ..rle.rle_packbits import RlePackBits
 from ..transform import Transformation
 from .bits import BitArray
 from .hf_tree import HuffmanCanonicalTree
@@ -6,7 +6,7 @@ from .hf_tree import HuffmanCanonicalTree
 BYTE_SIZE = 8
 BYTE_CAPACITY = 2**BYTE_SIZE
 
-TREE_ENCODER = RLE()
+TREE_ENCODER = RlePackBits()
 TREE_HEADER_SIZE = 4
 
 

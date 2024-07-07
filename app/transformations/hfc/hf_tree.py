@@ -45,7 +45,7 @@ class HuffmanCanonicalTree:
 
     def get_trie(self):
         if not self.trie:
-            Trie = lambda: defaultdict(Trie)
+            Trie = lambda: defaultdict(Trie)  # noqa: E731
             trie = Trie()
             encoding_table = self.get_encoding_table()
             encoding_table = [
@@ -69,7 +69,9 @@ class HuffmanCanonicalTree:
 
     def get_encoding_table(self):
         if not self.encoding_table:
-            lengths = [(l, b) for b, l in enumerate(self.lengths)]
+            lengths = [
+                (l, b) for b, l in enumerate(self.lengths)  # noqa: E741
+            ]
             lengths.sort()
             encoding_table = [None] * BYTE_CAPACITY
             current_code = -1

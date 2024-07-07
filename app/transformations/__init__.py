@@ -1,7 +1,16 @@
-from .bwt.bwt import BWT
-from .hfc.hfc import HFC
-from .identity import Id
-from .mtf.mtf import MTF
-from .rle.rle import RLE
+from app.transformations.bwt.bwt import BWT
+from app.transformations.hfc.hfc import HFC
+from app.transformations.identity import Id
+from app.transformations.mtf.mtf import MTF
+from app.transformations.rle import RLE, RlePackBits, RlePairs, RleStreams
 
-__all__ = ("BWT", "HFC", "MTF", "RLE", "Id")
+__all__ = (
+    "BWT",
+    "HFC",
+    "MTF",
+    "RLE",
+    "RlePackBits",
+    "RlePairs",
+    "RleStreams",
+    "Id",
+)

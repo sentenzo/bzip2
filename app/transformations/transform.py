@@ -1,9 +1,9 @@
 class Transformation:
     def encode(self, block: bytes) -> bytes:
-        ...
+        raise NotImplementedError
 
     def decode(self, block: bytes) -> bytes:
-        ...
+        raise NotImplementedError
 
     def __rshift__(self, obj):
         left_transformations = []

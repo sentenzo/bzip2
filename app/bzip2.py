@@ -1,5 +1,5 @@
-from packager import Packager
-from transformations import BWT, HFC, MTF, RLE
+from app.packager import Packager
+from app.transformations import BWT, HFC, MTF, RLE
 
 bzip2 = RLE() >> BWT() >> MTF() >> RLE() >> HFC()
 

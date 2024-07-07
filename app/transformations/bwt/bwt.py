@@ -45,7 +45,7 @@ class BWT(Transformation):
         origin_ptr = int.from_bytes(block[:ORIGIN_PTR_SIZE], byteorder="big")
         block = block[ORIGIN_PTR_SIZE:]
         block_size = len(block)
-        decoded = [None] * block_size
+        decoded: list[int] = [0] * block_size
 
         transmissions = list(range(block_size))
         transmissions.sort(key=lambda i: block[i])

@@ -1,3 +1,27 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "bzip2"
+version = "0.1.0"
+description = "A (rookie makeshift improvised amateur suboptimal crude non-production-ready) bzip2 compression algorithm implementation from scratch."
+authors = ["sentenzo"]
+license = "MIT"
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+black = "*"
+isort = "*"
+ruff = "*"
+mypy = "*"
+jupyter = "*"
+pytest = "^8.2.2"
+
 [tool.black]
 line-length = 79
 
@@ -5,7 +29,20 @@ line-length = 79
 line_length = 79
 known_local_folder = []
 
-[tool.pytest.ini_options]
-markers = [
-    "slow: marks test as slow (deselect with '-m \"not slow\"')",
+[tool.ruff]
+lint.select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    # "I",  # isort
+    "C", # flake8-comprehensions
+    "B", # flake8-bugbear
 ]
+lint.ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "C901", # too complex
+]
+
+[tool.pytest.ini_options]
+markers = ["slow: marks test as slow (deselect with '-m \"not slow\"')"]

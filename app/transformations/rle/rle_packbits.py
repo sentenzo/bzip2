@@ -4,21 +4,19 @@ from itertools import groupby
 from ..transform import Transformation
 
 
-class RLE(Transformation):
-    """Run-length encoding"""
-
+class RlePackBits(Transformation):
     def encode(self, block: bytes) -> bytes:
         Repeat = namedtuple("Repeat", ["times", "byte"])
-        chunks = []
+        chunks: list[Repeat | list[int]] = []
         # splitting into chunks
-        for byte, goup in groupby(block):
-            count = len(list(goup))
+        for byte, group in groupby(block):
+            count = len(list(group))
             if count > 2:
                 chunks.append(Repeat(count, byte))
             else:
                 if not chunks or isinstance(chunks[-1], Repeat):
                     chunks.append([])
-                chunks[-1].extend([byte] * count)
+                chunks[-1].extend([byte] * count)  # type: ignore[union-attr]
 
         encoded = bytearray()
         # splitting chunks into packages, counting package bytes

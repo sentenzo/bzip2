@@ -1,7 +1,5 @@
 import filecmp
 
-import pytest
-
 from app.packager import Packager
 from app.transformations import Id
 
