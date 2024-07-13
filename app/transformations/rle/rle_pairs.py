@@ -11,12 +11,17 @@ class RlePairs(Transformation):
         for byte, group in groupby(block):
             count = len(list(group))
             if count > 1:
-                encoded.append(byte)
-                encoded.append(byte)
-                counter_byte = count.to_bytes(
-                    1, signed=False, byteorder="big"
-                )[0]
-                encoded.append(counter_byte)
+                while count > 1:
+                    encoded.append(byte)
+                    encoded.append(byte)
+                    cur_count = min(count, 255)
+                    counter_byte = cur_count.to_bytes(
+                        1, signed=False, byteorder="big"
+                    )[0]
+                    encoded.append(counter_byte)
+                    count -= cur_count
+                if count == 1:
+                    encoded.append(byte)
             else:
                 encoded.append(byte)
         return bytes(encoded)
